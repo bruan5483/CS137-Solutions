@@ -25,6 +25,7 @@ void plus(int num, int curr){
 
 }
 
+//prints the trunk of the tree
 void trunk(int n, int curr, int width){
     if (curr==2*n+1) {
         printf(".");
@@ -48,6 +49,7 @@ void trunk(int n, int curr, int width){
     return;
 }
 
+//prints the tree
 void tre(int n, int row, int width){
     if (row == 1){
         printf(".");
@@ -78,6 +80,7 @@ void tre(int n, int row, int width){
 
 }
 
+//required function calls helper function
 void tree(int n){
     int width;
     if (n%2==0)width = n/2; 

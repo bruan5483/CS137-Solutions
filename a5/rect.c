@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+
 typedef struct Point{
 	int x;
 	int y;
@@ -12,37 +13,30 @@ typedef struct Rectangle {
    int height;
 } rectangle;
 
+int max(int a, int b){
+    return a > b ? a : b;
+}
+
+int min(int a, int b){
+    return a < b ? a : b;
+}
 
 rectangle intersection(rectangle rects[], int n){
     //note n > 1
-    rectangle currIn = rects[0];
-
-    for(int i=1;i<n;i++){
-		int x = currIn.bottomLeft.x;
-		int y = currIn.bottomLeft.y;
-		if(x < rects[i].bottomLeft.x) currIn.bottomLeft.x = rects[i].bottomLeft.x;
-		if(y < rects[i].bottomLeft.y) currIn.bottomLeft.y = rects[i].bottomLeft.y;
-		if(x+currIn.width > rects[i].bottomLeft.x+rects[i].width){
-			currIn.width = rects[i].bottomLeft.x+rects[i].width-currIn.bottomLeft.x;
-		} else {
-			currIn.width = x+currIn.width-currIn.bottomLeft.x;
-		}
-		if(y+currIn.height > rects[i].bottomLeft.y+rects[i].height){
-			currIn.height = rects[i].bottomLeft.y+rects[i].height-currIn.bottomLeft.y;
-		} else {
-			currIn.height = y+currIn.height-currIn.bottomLeft.y;
-		}
-
-		if(currIn.width<0 || currIn.height<0){
-			currIn.bottomLeft.x = 0;
-			currIn.bottomLeft.y = 0;
-			currIn.width = 0;
-			currIn.height = 0;
-			break;
-		}
-	}
-
-    return currIn;
+    rectangle inter = rects[0];
+    for (int i=1; i<n; i++){
+        point bottom = {max(inter.bottomLeft.x,rects[i].bottomLeft.x), max(inter.bottomLeft.y,rects[i].bottomLeft.y)};
+        inter.width = min(inter.bottomLeft.x + inter.width, rects[i].bottomLeft.x + rects[i].width) - bottom.x;
+        inter.height = min(inter.bottomLeft.y + inter.height, rects[i].bottomLeft.y + rects[i].height) - bottom.y;
+        inter.bottomLeft = bottom;
+        if (inter.width < 0 || inter.height < 0){
+            inter.bottomLeft.x = 0;
+            inter.bottomLeft.y = 0;
+            inter.height = 0;
+            inter.width = 0;
+        }
+    }
+    return inter;
 }
 /*
 int main(){
@@ -82,14 +76,14 @@ int main(){
 	assert(result.height == 0);
 
 	// Test 4
-	rectangle a = {{0,0},2,2};
-	rectangle b = {{2,0},2,2};
+	rectangle a = {{0,0},1,1};
+	rectangle b = {{1,1},1,1};
 	rectangle rects4[2] = {a,b};
-	result = intersection(rects4, 2);
-	assert(result.bottomLeft.x == 2);
-	assert(result.bottomLeft.y == 0);
+    result = intersection(rects4, 2);
+	assert(result.bottomLeft.x == 1);
+	assert(result.bottomLeft.y == 1);
 	assert(result.width == 0);
-	assert(result.height == 2);
+	assert(result.height == 0);
 	
 
 	return 0;

@@ -28,9 +28,7 @@ Account* OpenAccount(Bank *bank) {
     acc->active = true;
     acc->balance = 0.0;
     acc->bank = bank;
-
-    Loan l = {false, 0.0, 1.0};
-    acc->loan = l;
+    acc->loan = (Loan){false, 0.0, 1.0};
 
     Account **p = malloc(bank->nAcc*sizeof(Account*));
     assert(p);

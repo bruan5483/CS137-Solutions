@@ -79,6 +79,7 @@ struct linteger *vlintegerAdd(struct linteger *t1, struct linteger *t2)
 
 	if (*(a->arr)==0){
 		int *ar = malloc((a->length-1)*sizeof(int));
+		assert(ar);
 		for(int j=0; j<a->length-1; j++){
 			*(ar + j) = *(a->arr + j + 1);
 		}

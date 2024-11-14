@@ -4,9 +4,43 @@
 #include <string.h>
 
 char* merge(char* s1, char* s2) {
-   
-}
+    char* s3 = malloc(((strlen(s1)+strlen(s2))+2)*sizeof(char));
+    int curr_i2 = 0;
+    int curr_i3 = 0;
+    for(int i = 0; i<strlen(s1); i++){
+        if(s1[i] == ' '){
+            if (curr_i2<strlen(s2)) {
+                s3[curr_i3] = ' ';
+                curr_i3++;
+            }
+            while (s2[curr_i2] != ' ' && curr_i2<strlen(s2)){
+                s3[curr_i3] = s2[curr_i2];
+                curr_i3++;
+                curr_i2++;
+            }
+            if (s2[curr_i2] == ' ') curr_i2++;;
+        }
 
+        s3[curr_i3] = s1[i];
+        curr_i3++;
+    }
+
+    if (curr_i2<strlen(s2)){
+        s3[curr_i3] = ' ';
+        curr_i3++;
+    }
+
+    while (curr_i2<strlen(s2)){
+        s3[curr_i3] = s2[curr_i2];
+        curr_i3++;
+        curr_i2++;
+    }
+
+    s3[curr_i3] = '\0';
+
+    return s3;
+}
+/*
 int main(void){
         
     char s1[] = "The brown jumps the dog";
@@ -29,3 +63,4 @@ int main(void){
 
     return 0;
 }
+*/

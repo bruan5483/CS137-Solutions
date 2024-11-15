@@ -55,6 +55,13 @@ int main(void){
     lookBehind("", "w", word5);
     assert(0==strcmp("o", word5));
     
+
+
+   char word6[] = "113731377" ;
+    lookBehind("", "137", word6);
+    assert(0==strcmp("137", word6));
+
+
     return 0;
 }
 */

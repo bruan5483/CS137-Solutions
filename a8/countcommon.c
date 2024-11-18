@@ -4,7 +4,7 @@
 
 int count_common(long long int a[], long long int n1, long long int b[], long long int n2){
     long long int i = 0, j = 0;
-    long long int count = 0;
+    int count = 0;
     while(i < n1 && j < n2){
         if(a[i]==b[j]){
             count++;

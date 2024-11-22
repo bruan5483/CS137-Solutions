@@ -2,6 +2,7 @@
 #include <assert.h>
 
 // O(n) sorting (O(n)+O(n)=O(n))
+// See https://www.w3schools.com/dsa/dsa_algo_countingsort.php for proof
 void sort(long long a[], int n){
     // frequency array
     long long int *temp = calloc(n+1,sizeof(long long int));

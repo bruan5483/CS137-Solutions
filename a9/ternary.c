@@ -20,6 +20,7 @@ int help(int L[], int beginning, int end, int target, int last_occur){
 
 
 int ternarylastsearch(int L[], int len, int target){
+	if (len < 1) return -1; // In case there is some problem with len
 	return help(L,0,len-1,target,-1);
 }
 
@@ -27,6 +28,7 @@ int main(void) {
    
     int a[10] = {1, 2, 3, 4, 5, 6, 6, 6, 9, 100};
     assert(7 == ternarylastsearch(a,10,6));
+
 	printf("\n");
 	int a2[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     assert(-1 == ternarylastsearch(a2,10,100));
@@ -34,9 +36,28 @@ int main(void) {
 	assert(-1 == ternarylastsearch(a2,10,11));
 	printf("\n");
 	assert(0 == ternarylastsearch(a2,10,2));
+
 	printf("\n");
 	int a3[12] = {6,6,6,6,6,6,6,6,6,6,6,6};
     assert(11 == ternarylastsearch(a3,12,6));
+
+	printf("\n");
+	int t1[1] = {5};
+	assert(0 == ternarylastsearch(t1,1,5));
+
+	printf("\n");
+	int t2[6] = {3,4,4,5,6,6};
+	assert(0 == ternarylastsearch(t2,6,3));
+	printf("\n");
+	assert(5 == ternarylastsearch(t2,6,6));
+	printf("\n");
+	assert(2 == ternarylastsearch(t2,6,4));
+
+	printf("\n");
+	int t3[5] = {1,2,2,2,3};
+	assert(3 == ternarylastsearch(t3,5,2));
+	printf("\n");
+	assert(-1 == ternarylastsearch(t3,5,4));
 
     return 0;
 }

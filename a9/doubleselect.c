@@ -31,7 +31,8 @@ void help(int a[], int len, int og[], int og_len){
     }
 
     swap(a, 0, min_i);
-    if(max_i == 0) swap(a, len-1, min_i);
+    if(max_i == 0 && min_i == len-1);
+    else if(max_i == 0) swap(a, len-1, min_i);
     else swap(a, len-1, max_i);
 
     printarr(og, og_len);

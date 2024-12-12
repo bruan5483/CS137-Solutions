@@ -1,0 +1,35 @@
+Given the following structure description: 
+
+A course is a structure that contains:
+     a list of students
+     a list of instructors
+
+A student is a structure that contains:
+      a student username
+      a student id
+      section number
+      an array of 10 integers for 10 assignments grade
+      an array of 3 integers for 3 midterms
+      an integer for the final grade (40% assignments, 20% each midterm)
+
+An instructor is a structure that contains:
+      name (string), section number.
+       you may assume that each instructor teaches one section
+
+This is an open question, so you decide on the implementation, the header of each function, the assumptions, etc.
+
+Write functions that support the following:
+
+1) creating a course
+2) destroying a course
+3) adding a student to the course (given student id and student username, and section number)
+4) adding an instructor to the course(given instructor name, section number)
+5) removing a student from the course (given student id)
+5) adding assignment grade to certain student (given student username, assignment number, and the grade)
+6) adding a midterm grade to a particular student (given student username, midterm number, and the grade)
+7) calculating and updating the final grade of a specific student (given student username), assuming that all grades for assignments and midterms are valid.
+8) print students' usernames and their final grades sorted by username for all sections
+9) print students' usernames who failed the course in a given section
+10) you can add any function you like for practising
+
+Testing is critical; test all different cases and test for memory leaks.  
